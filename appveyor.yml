@@ -1,8 +1,8 @@
 environment:
     DEPLOY_PROVIDER: bintray
-    BINTRAY_ACCOUNT: alexpux
+    BINTRAY_ACCOUNT: renatosilva
     BINTRAY_REPOSITORY: msys2
-    PACMAN_REPOSITORY_NAME: ci.msys
+    PACMAN_REPOSITORY_NAME: renatosilva
     BUILD_URL: https://ci.appveyor.com/project/$(APPVEYOR_ACCOUNT_NAME)/$(APPVEYOR_PROJECT_NAME)/build/$(APPVEYOR_BUILD_VERSION)
 
 build_script:
@@ -22,4 +22,4 @@ deploy:
       publish: true
       override: true
       api_key:
-          secure: B2XBLbsX8EQOpWyyaHskipMoF2+Tbt6hc/afbVm82f01CBKruspjwhee4K4C7/xf
+          secure: jSLa23oK7k8+ynQbpxa42+Pw4rhYPTORczODRI4lb6+1jVcNIH2cel6UirgrKTiQ

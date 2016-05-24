@@ -1,0 +1,44 @@
+# Maintainer: Renato Silva <br.renatosilva@gmail.com>
+
+_realname='scripts'
+pkgname="${_realname}-bzr"
+pkgver=r328
+pkgrel=1
+pkgdesc='A set of useful scripts'
+url='https://github.com/renatosilva/scripts'
+license=(GPL2)
+arch=(any)
+
+provides=(${_realname})
+conflicts=(${_realname})
+depends=(colormake dos2unix easyoptions git libiconv ruby sqlite vimpager) # perl
+makedepends=(bzr)
+optdepends=('bzr: if not using some external installation'
+            'p7zip: if not using some external installation')
+source=('bzr+https://code.launchpad.net/~renatosilva/+junk/scripts')
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/${_realname}"
+    printf 'r%s' "$(bzr revno)"
+}
+
+package() {
+    cd "${srcdir}/${_realname}"
+    install -Dm644 aliases.sh          "${pkgdir}/etc/profile.d/aliases.sh"
+    install -Dm755 bacon-crypt.rb      "${pkgdir}/usr/bin/bacon-crypt"
+    install -Dm755 bzrcheck.sh         "${pkgdir}/usr/bin/bzrcheck"
+    install -Dm755 bzrgrep.rb          "${pkgdir}/usr/bin/bzrgrep"
+    install -Dm755 bzrtags.sh          "${pkgdir}/usr/bin/bzrtags"
+    install -Dm755 csvt.rb             "${pkgdir}/usr/bin/csvt"
+    install -Dm755 launchtohub.sh      "${pkgdir}/usr/bin/launchtohub"
+    install -Dm755 numpass.sh          "${pkgdir}/usr/bin/numpass"
+    install -Dm755 randpass.sh         "${pkgdir}/usr/bin/randpass"
+
+    # Windows
+    install -Dm755 ivona-speak.sh      "${pkgdir}/usr/bin/ivona-speak"
+    install -Dm755 notestopdf.rb       "${pkgdir}/usr/bin/notestopdf"
+    install -Dm755 winbackup.sh        "${pkgdir}/usr/bin/winbackup"
+    install -Dm755 winclean.sh         "${pkgdir}/usr/bin/winclean"
+    install -Dm755 winconv.sh          "${pkgdir}/usr/bin/winconv"
+}
